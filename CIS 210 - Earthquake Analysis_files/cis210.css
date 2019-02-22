@@ -1,0 +1,296 @@
+/*#############################################################
+Name: Transparentia  (taken from OSWD.org)
+Date: 2006-08-20
+Description: Simple, lightweight and slightly blue.
+Orignal Author: Viktor Persson 
+Modified 2009-12-17 by Michal Young for SCORE 2011
+  Now hacked pretty far from the original design, but with 
+  some bits and pieces still present
+Modified 2010-09-28 by Megen Brittell for CIS 210
+Original URL: http://templates.arcsin.se
+
+Creative Commons license: 
+Feel free to use and modify but please provide credits.
+#############################################################*/
+
+/* standard elements */
+* {
+	margin: 0;
+	padding: 0;
+} 
+a {
+	color: #36C;
+}
+a:hover {
+	color: #06F;
+}
+body {
+	background: #EEE; 
+	color: #444;
+	font: normal 85% "Lucida Sans Unicode",sans-serif;
+	margin: 0;
+}
+input {
+	color: #555;
+	font: normal 1.1em "Lucida Sans Unicode",sans-serif;
+}
+p,cite,code,ul {
+	/* font-size: 1.2em; */ 
+	padding-bottom: 1.2em;
+}
+
+tt, kbd {
+    /* Adjustment seems necessary to ffit the surrounding text */ 
+    font-size: 1.2em; 
+    }
+
+h1,h2,h3 {
+	color: #B72512;
+	padding-top: 6px;
+}
+
+h1 {
+	font-size: 1.5em;
+	margin-bottom: 0.5ex;
+	margin-top: 0ex;
+	padding-top: 0ex;
+}
+
+h2 { font-size: 1.25em; }
+h3 { font-size: 1.1em; }
+
+h3.sub { font-size: 0.9em;
+	 color: #B02010;  /* Darker shade or h3? */ 
+       }
+
+code {
+	/* background: url(img/bgcode.gif); */ 
+	border: 2px dotted #669966;
+	border-left: 6px solid #669966;
+	color: #555;
+	display: block;
+	font: normal 1.0em "Lucida Sans Unicode",serif;
+	margin-bottom: 12px;
+	padding: 8px 10px;
+	white-space: pre;
+}
+
+blockquote {
+    background: light grey; 
+    margin-left: 2em; 
+}
+
+cite {
+	background: url(img/quote.gif) no-repeat;
+	color: #666;
+	display: block;
+	font: normal 1.3em "Lucida Sans Unicode",serif;
+	padding-left: 28px;
+}
+
+/* structure */
+.container {
+	margin: 0 auto;
+	padding-bottom: 6px;	/* width: 90%; /* was a fixed width */ 
+}
+
+
+.pageheader {
+	background-color: #88CC88;
+	height: 160px;
+	padding-left: 8px; 
+	margin: 8px;
+}
+
+/* title */
+.title h1 {
+	color: black;
+	font: bold 2em Verdana,sans-serif;
+	margin: 1ex;
+	padding-top: 1ex;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* navigation --- not currently used?  */
+.navigation {
+	margin-bottom: 4px;
+}
+.navigation a {
+	background-color: #4A91C3;
+	color: #FFF;
+	float: left;
+	font: bold 1.2em "Trebuchet MS",sans-serif;
+	padding: 8px 0;
+	width: 19%; 
+	border-right: 1px solid #FFF;
+	text-align: center;
+	text-decoration: none;
+}
+.navigation a:hover {
+	background-color: #000;
+	color: #FFF;
+}
+
+
+/* main left sidebar (menu)  */
+.sidenav h1,.sidenav ul {
+	padding-left: 12px;
+}
+.sidenav {
+	background: #EEE;
+	border: 1px solid #E5E5E5;
+	float: left;
+	width: 180px;  /* Interdependent on .content.margin-left */
+	margin-left: 10px; 
+}
+.sidenav h1 {
+	color: #777;
+	font-size: 1.5em;
+	height: 20px;
+	margin-top: 1.2em;
+}
+.sidenav ul {
+	border-top: 1px solid #FAFAFA;
+	background: url(img/bgul.gif) repeat-x;
+	margin: 0;
+	padding: 0;
+}
+.sidenav li {
+	border: 1px solid #FAFAFA;
+	border-top: none;
+	list-style: none;
+	margin: 0;
+	color: #0075A7;
+	display: block;
+	font-size: 1.2em;
+	padding: 3px 6px 3px 14px;
+	text-decoration: none;
+
+}
+.sidenav li a {
+	color: #0075A7;
+	display: block;
+	/* font-size: 1.2em; */
+	/* padding: 3px 6px 3px 14px;*/
+	text-decoration: none;
+}
+.sidenav li a:hover {
+	color: #990000;
+	background-color: #7AADFA;
+	font-weight: bold;
+}
+
+/* content (main block) */
+.content {
+	max-width: 900px; /* added */ 
+	margin-left: 200px; /* Add something to width of sidenav */ 
+	margin-right: 8px; /* Match to header */ 
+}
+.content .item {
+	padding: 6px 12px;
+	border: 1px solid #EEE;
+	background: #FFF;
+	margin-bottom: 8px;
+}
+.descr {
+        font-size: 1.0em; /* Same as <p> */
+	color: EEE;
+	border-style: dotted; 
+	border-width: 1px; 
+	border-color: #D0D0D0; 
+	font-style: italic; 
+	padding-left: 1em; 
+	margin-left: 2em; 
+	margin-right: 2em; 
+	margin-bottom: 6px;
+}
+
+
+/* Lists, unordered and ordered */
+.content li {
+	list-style: square;
+	margin-left: 18px;
+}
+
+/* Description lists */
+.content dt { 
+	font-weight: bolder; 
+	}
+	
+.content dd {
+	margin-left: 5em;
+	}
+
+/* Q/A style in .descr block, e.g., in FAQ */ 
+.QA {
+    padding-left: 1em; 
+    padding-top: 1em; 
+}
+
+.QA .Q {
+    font-weight: bolder; 
+}
+
+.QA .A {
+
+}
+
+/* Keeps (no-break) */
+.nobr {white-space: nowrap;}
+
+/* Distinguish user input in code examples */
+.in { font-style: italic; font-weight: bolder; color: rgb(15,150,15); }
+
+/* "See-also" navigation block (as a block in the running text)
+ */ 
+.seealso {
+	background: #EEE;
+	border: 1px dotted #F0F0F0;
+	color: black;
+	display: block;
+	font: normal 1.1em "Lucida Sans Unicode",serif;
+	margin-bottom: 12px;
+	padding: 8px 10px;
+}
+
+/* Schedule Table MB - 28 September 2010 */
+.lecture 	{ background-color:#449944;color:black; }
+.lab 		{
+	background-color:#C2E49F;
+	color:black;
+}
+.office 	{
+	background-color:#E8E8BA;
+	color:black;
+}
+.calendar	{ width:100%;border:1px dotted #449944;padding:2px;text-align:center; }
+
+/* Other tables */
+td, th {  background-color:#E2F3E2; color:black; 
+      margin: 5px; padding: 3px;
+      }
+
+/* footer */
+
+.clearer {
+	clear: both;
+}
+
+.footer {
+	background: #FFF;
+	border: 1px solid #EEE;
+	color: #666;
+	font-size: 1.0em;
+	margin: 0 auto;
+	text-align: center;
+	padding: 6px;
+}
+.footer a {
+	color: #36C;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: #06F;
+	text-decoration: underline;
+}

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0079)https://classes.cs.uoregon.edu/16F/cis210/assignments/W7-EarthquakeAnalysis.php -->
+<html class="gr__classes_cs_uoregon_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- This is for the <head> section of CIS210 pages,
+     not for the page header in the <body> section. 
+   Include here metadata including css links, etc., 
+   but omit the <title> element which may be specific
+   to each page. 
+   Set $root before calling this.
+-->
+
+
+<meta name="description" content="CIS 210, Computer Science 1">
+<meta name="keywords" content="Computer science, CS1"> 
+<meta name="author" content="Michal Young"> 
+
+   <link rel="stylesheet" type="text/css" href="./CIS 210 - Earthquake Analysis_files/cis210.css" media="screen">
+   <link rel="stylesheet" type="text/css" href="./CIS 210 - Earthquake Analysis_files/cis210-print.css" media="print">
+
+<title>CIS 210 - Earthquake Analysis</title></head>
+
+<body data-gr-c-s-loaded="true">
+<div class="container">
+
+  <!-- pagehead.php: Page header to include on each page -->
+
+<div class="pageheader">
+   <div class="title">
+   <h1>CIS 210, Fall 2016<br> Introduction to Computer Science</h1>
+   </div> <!-- title -->
+   </div> <!-- pageheader -->
+<!-- end pagehead.php -->
+  <!-- sidebar.php:  Sidebar to be replicated on each page 
+     Note links must be relative to site URL-->
+<div class="sidenav">
+   <h1>Main Menu</h1>
+   <ul>
+   <li><a href="https://classes.cs.uoregon.edu/16F/cis210/index.php">Class home page</a></li>
+   <li><a href="https://piazza.com/uoregon/fall2016/cis210/home">Piazza</a></li>
+   <li><a href="https://classes.cs.uoregon.edu/16F/cis210/hints.php">How to Succeed</a></li>
+   <li><a href="https://classes.cs.uoregon.edu/16F/cis210/schedule.php">Schedule</a></li>
+   <li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments.php">Assignments</a></li>
+   <li><a href="https://classes.cs.uoregon.edu/16F/cis210/references.php">References</a></li>
+  <li><a href="https://classes.cs.uoregon.edu/16F/cis210/exams.php">Exams</a></li>
+<!--
+  <li><a href="/16F/cis210/assignments/Contest.php" >Contest</a></li>
+-->
+   </ul>
+</div>
+
+<div class="content">
+
+<div class="item">
+  <h1>Earthquake Analysis</h1>
+<p>This assignment is due at 5pm on Friday, November 11.  Use
+  Canvas to turn in eqanalysis.py</p>
+<h1>Purpose</h1>
+<p>
+  This project builds on the statistical analysis material we have covered
+  in class (and in chapter 5 in the textbook) and the material in chapter 7
+  of the textbook on data mining.  It is a relatively larger project than
+  we have tackled in the past, although many parts are somewhat repetitive.
+</p>
+
+<h1>Pair Assignment</h1>
+  <p>You are encouraged to use <em>pair programming</em> to
+  complete this assignment.  You can share code with one other
+  classmate, who should be listed as an author in your program
+  docstring.  You may discuss general approach and design with other
+  students, without sharing code; cite them in your docstring
+  clearly distinguishing design discussion from code authorship.
+  </p>
+  <p>
+  You have to create 6 functions in this assignment, as well as understand
+  how a number of other provided functions and modules work.  It will take
+  concerted, sustained effort to complete this assignment successfully.
+</p>
+</div>
+
+
+<div class="item">
+<h1>How can a computer science novice tackle data science?</h1>
+<p>
+As we discussed in lecture, there is a rapid increase in the amount of
+published data in the world; some say the growth is exponential.
+Data analytics is the science of examining raw data with the purpose of drawing conclusions about (inferring information from) the raw data.  Data analysis is
+the process of inspecting, cleaning, transforming, and modeling data with the
+goal of discovering useful information.
+  </p>
+<p>
+We discussed several central tendency measures of data, a couple of dispersion
+measures, and frequency tables for showing some aspects of data.  The purpose
+of this project is for you to apply these measures, and to use turtle graphics
+for plotting the raw data, to assist an analyst in understanding earthquake
+data here in the Pacific Northwest.
+  </p>
+ 
+  <h2>Requirements</h2>
+  <p>I have provided
+  <a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/eqanalysis.py">some code</a> to get started.
+  You don't have to use it,
+  but if you do, the FIXME comments indicate places where you will need
+  to add or modify code. 
+  </p>
+<p>
+Your program will be executed as follows from the command or terminal window:
+</p>
+<code><pre>$ python3 eqanalysis.py file.csv plot clusters
+$ python3 eqanalysis.py file.csv plot magnitudes
+$ python3 eqanalysis.py file.csv plot depths
+$ python3 eqanalysis.py file.csv analyze clusters
+$ python3 eqanalysis.py file.csv analyze magnitudes
+$ python3 eqanalysis.py file.csv analyze depths
+</pre></code>
+<p>
+The first three will generate <em>dot plots</em> on a turtle graphics window,
+while the last three will display mean, median, standard deviation, and
+frequency table information on the standard output; for cluster analysis,
+the mean, median, and standard deviation information is shown for each cluster.
+</p>
+
+</div>
+
+<div class="item">
+<h1>How to proceed</h1>
+<p>
+I described several statistical functions in lecture, and have provided them
+<a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/data.py">here</a>; you should place this file in
+the directory in which you are running <em>eqanalysis.py</em>.
+  </p>
+You should <em>thoroughly</em> understand the material in chapters 5 and 7 of
+the textbook.
+The authors show you how to use the turtle.dot() function to draw dots on a
+graph; you will need to do this for the plotting required in this assignment.
+<p></p>
+In order to use the background map of the Pacific NorthWest upon which to draw
+your dots, you have convert an event's longitude and latitude into x and y
+pixel coordinates on the turtle window.
+I have provided a function in the starter code, xy_calculate(lon, lat), that
+returns a tuple with the correct x and y coordinates to feed into turtle.goto().
+<p></p>
+<p>
+Besides the statistical functions, I have a number of data files that you will
+want to download into the same directory:
+</p>
+<ul>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/PacificNW.gif">A map of the Pacific Northwest which is used as the background in a turtle window</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EQData.csv">A CSV file containing 10,000 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData01.csv">A CSV file containing 100 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData05.csv">A CSV file containing 500 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData10.csv">A CSV file containing 1,000 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData20.csv">A CSV file containing 2,000 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData30.csv">A CSV file containing 3,000 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData40.csv">A CSV file containing 4,000 events</a></li>
+<li><a href="https://classes.cs.uoregon.edu/16F/cis210/assignments/base/earthquakes/EqData50.csv">A CSV file containing 5,000 events</a></li>
+</ul>
+
+</div> <!-- item -->
+<div class="item">
+<h1>Examples using EqData01.csv</h1>
+<h2>$ python3 eqanalysis.py EqData01.csv plot magnitudes</h2>
+<img src="./CIS 210 - Earthquake Analysis_files/PlotMagnitudes.png" width="90%" height="90%">
+<h2>$ python3 eqanalysis.py EqData01.csv plot depths</h2>
+<img src="./CIS 210 - Earthquake Analysis_files/PlotDepths.png" width="90%" height="90%">
+<h2>$ python3 eqanalysis.py EqData01.csv plot clusters</h2>
+<img src="./CIS 210 - Earthquake Analysis_files/PlotClusters.png" width="90%" height="90%">
+<h2>$ python3 eqanalysis.py EqData01.csv analyze magnitudes</h2>
+<code><pre>Analysis of magnitude data
+  Mean magnitude = 1.3
+  Median magnitude = 1.1
+  Standard deviation = 0.57
+ITEM    FREQUENCY
+  0.6      3
+  0.7      8
+  0.8     11
+  0.9      8
+  1.0     10
+  1.1     13
+  1.2      4
+  1.3      6
+  1.4      4
+  1.5      6
+  1.6      4
+  1.7      4
+  1.8      3
+  1.9      4
+  2.0      1
+  2.1      5
+  2.3      3
+  2.4      2
+  2.5      3
+  2.6      1
+  2.9      2
+</pre></code>
+<h2>$ python3 eqanalysis.py EqData01.csv analyze depths</h2>
+<code><pre>Analysis of depth data
+  Mean depth = 6.1 miles
+  Median depth = 4.3 miles
+  Standard deviation = 6.87 miles
+ITEM    FREQUENCY
+  0.0     31
+  0.2      1
+  0.3      1
+  1.1      3
+  1.3      1
+  1.6      2
+  2.3      1
+  2.6      1
+  2.7      1
+  2.8      2
+  3.1      1
+  3.3      2
+  3.5      2
+  3.8      1
+  4.0      2
+  4.3      2
+  4.4      1
+  4.9      1
+  5.0      1
+  5.2      1
+  5.7      1
+  5.9      1
+  6.3      2
+  6.5      2
+  6.8      1
+  7.0      1
+  7.2      1
+  8.5      1
+  8.7      1
+  8.9      2
+  9.2      1
+  9.4      1
+  9.5      1
+  9.7      2
+ 10.0      1
+ 10.1      1
+ 10.2      1
+ 10.4      1
+ 10.5      1
+ 10.8      1
+ 11.2      1
+ 11.3      1
+ 11.4      1
+ 11.7      1
+ 11.8      1
+ 12.0      1
+ 12.1      1
+ 12.2      1
+ 12.4      1
+ 12.5      1
+ 12.6      1
+ 12.7      1
+ 12.9      1
+ 13.1      1
+ 14.1      1
+ 14.7      1
+ 15.1      1
+ 15.2      1
+ 15.3      1
+ 19.8      1
+ 30.7      1
+ 33.8      2
+</pre></code>
+<h2>$ python3 eqanalysis.py EqData01.csv analyze clusters</h2>
+<code><pre>Analysis of cluster 0
+  Analysis of magnitude data
+    Mean magnitude = 1.8
+    Median magnitude = 1.9
+    Standard deviation = 1.48
+  Analysis of depth data
+    Mean depth = 21.6 miles
+    Median depth = 21.6 miles
+    Standard deviation = 17.25 miles
+Analysis of cluster 1
+  Analysis of magnitude data
+    Mean magnitude = 1.3
+    Median magnitude = 1.1
+    Standard deviation = 0.51
+  Analysis of depth data
+    Mean depth = 7.2 miles
+    Median depth = 4.4 miles
+    Standard deviation = 10.48 miles
+Analysis of cluster 2
+  Analysis of magnitude data
+    Mean magnitude = 1.2
+    Median magnitude = 1.1
+    Standard deviation = 0.53
+  Analysis of depth data
+    Mean depth = 5.8 miles
+    Median depth = 5.1 miles
+    Standard deviation = 5.07 miles
+Analysis of cluster 3
+  Analysis of magnitude data
+    Mean magnitude = 1.6
+    Median magnitude = 1.6
+    Standard deviation = 0.71
+  Analysis of depth data
+    Mean depth = 1.8 miles
+    Median depth = 0.0 miles
+    Standard deviation = 2.71 miles
+Analysis of cluster 4
+  Analysis of magnitude data
+    Mean magnitude = 1.2
+    Median magnitude = 1.1
+    Standard deviation = 0.43
+  Analysis of depth data
+    Mean depth = 8.7 miles
+    Median depth = 8.9 miles
+    Standard deviation = 6.65 miles
+Analysis of cluster 5
+  Analysis of magnitude data
+    Mean magnitude = 1.6
+    Median magnitude = 1.7
+    Standard deviation = 0.40
+  Analysis of depth data
+    Mean depth = 2.9 miles
+    Median depth = 1.1 miles
+    Standard deviation = 3.98 miles
+</pre></code>
+</div>
+
+  <div class="item">
+  <h1>Grading rubric</h1>
+  <table width="85%" border="0" cellpadding="2">
+    <tbody><tr>
+      <th colspan="2" scope="col">Functional correctness</th>
+      <th width="8%" scope="col">&nbsp;</th>
+      <th width="60%" scope="col">&nbsp;</th>
+      <th width="1%" scope="col">&nbsp;</th>
+      <th width="3%" scope="col">60</th>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>plot_magnitudes()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>plot_depths()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>plot_clusters()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>analyze_magnitudes()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>analyze_depths()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="23%"><p>analyze_clusters()</p>        </td>
+      <td>10</td>
+      <td>10 if meets spec, 5 = minor discrepancy, 0 = ignored spec</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th colspan="2">Other requirements</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><p>Header docstring</p>        </td>
+      <td>5</td>
+      <td>5 = as specified, 3 = minor issue, e.g., as #comment, 0 = missing
+           or incomplete</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Program style and readability</td>
+      <td>10</td>
+      <td><p>10 Good variable names, indentation, etc --- 
+      very readable code, 8 = minor issues, such as inconsistent indentation, 
+      5 = major issues that interfere with readability of code, 
+      0 = unreadable mess </p></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th colspan="2">Total</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>75</td>
+    </tr>
+  </tbody></table>
+  <p>I can't anticipate all issues that may be encountered in grading, 
+  so points may be deducted for other issues not listed in the rubric. 
+   A program that does not compile and run (e.g., because of a syntax error) 
+  starts with 0 points for functional correctness, but the grader at his or her 
+  discretion may award some partial credit. </p>
+  <p>&nbsp;</p>
+  </div>
+</div> <!-- class content -->
+
+<!-- pagefoot.php: Page footing to include on each page -->
+<div class="clearer">  </div>
+   <div class="footer">
+
+   <span style="float: left">
+   Contact <a href="mailto:jsventek@uoregon.edu?subject=CIS%20210%20web%20site">webmaster</a>.
+   </span>
+   <span style="float: right">  Based loosely on Transparentia design by Arcsin, from OSWD.org. </span>
+      &nbsp; <!-- Space to put the two floats above.  Setting text justification does not seem to do it. -->
+   </div>
+<!-- Track our traffic ?? -->
+<!-- End pagefoot.php -->
+
+</div> <!-- class container -->
+
+
+
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
